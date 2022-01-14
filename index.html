@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <title>Course example</title>
+    <style>
+        body {
+            background-color: #85cff7;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+        }
+        #list_section { text-align: center; }
+        h1 {
+            color: white;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        ul { padding: 0; }
+        li {
+            background-color: #fff;
+            color: #000;
+            font-size: 20px;
+            list-style-type: none;
+            width: 20%;
+            margin: 0 auto 10px;
+            border-radius: 3px;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+        p {
+            background-color: #fff;
+            color: #666;
+            padding: 10px;
+            display: inline-block;
+            margin: 20px auto 20px auto;
+            width: 80%;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .item {
+            background-color: #fff;
+            color: #000;
+        }
+        input[type='text'] {
+            font-size: 12px;
+            padding: 6px;
+            border: 1px solid #000;
+            border-radius: 3px;
+        }
+        input[type='submit'] {
+            background-color: #fff;
+            color: #000;
+            border-radius: 8px;
+            border: none;
+            padding: 5px;
+        }
+        #itemField {
+            margin-top: 60px;
+            width: 10%;
+        }
+    </style>
+</head>
+<body>
+<div id="list_section">
+    <h1 id="header">To-do list</h1>
+    <ul>
+        <li class="item">Buy movie tickets</li>
+    </ul>
+    <form id="newItemForm">
+        <input type="text" id="itemField" placeholder="Item" />
+        <input type="submit" id="add" value="add" />
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+<script>
+    $(function() {
+
+        var $list, $newItemForm;
+        $list = $('ul');
+        $newItemForm = $('#newItemForm');
+
+        $newItemForm.on('submit', function(e) {
+            e.preventDefault();
+            var text = $('input:text');
+            $list.append('<li>' + text.val() + '</li>');
+            text.val('');
+        });
+
+        $list.on('click', 'li', function() {
+            var $this = $(this);
+            $this.remove();
+        });
+
+    });
+</script>
+</body>
+</html>
