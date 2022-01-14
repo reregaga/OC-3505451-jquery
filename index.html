@@ -70,7 +70,7 @@
 </div>
 <script src="https://code.jquery.com/jquery-1.12.3.js"></script>
 <script>
-    $(function() {
+    $(function() { // It is jQuery( callback ). Source: https://api.jquery.com/jquery/#jQuery-callback . Description: Binds a function to be executed when the DOM has finished loading.
 
         var $list, $newItemForm;
         $list = $('ul');
@@ -78,12 +78,13 @@
 
         $newItemForm.on('submit', function(e) {
             e.preventDefault();
-            var text = $('input:text');
+            var text = $(':text');  // i replace <input:text> to <:text> as writed in cheatSheet
             $list.append('<li>' + text.val() + '</li>');
             text.val('');
         });
 
-        $list.on('click', 'li', function() {
+        $list.on('click', 'li', function() { // <'li'> is descendant selector https://api.jquery.com/on/#on-events-selector-data-handler . A selector string to filter the descendants of the selected elements that trigger the event. If the selector is null or omitted, the event is always triggered when it reaches the selected element.
+            // Without add <'li'>, <ul> will be removed fully.
             var $this = $(this);
             $this.remove();
         });
